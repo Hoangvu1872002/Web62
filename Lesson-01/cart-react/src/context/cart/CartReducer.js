@@ -3,9 +3,6 @@
 
 const reducer =(state, action)=>{
     const {type, payload} = action;
-
-
-
     let newCart;
     switch(type){
 
@@ -26,8 +23,7 @@ const reducer =(state, action)=>{
                 }else{
                     return {
                         ...item
-                    }
-                }
+                    }                }
             })
             return{
                 ...state,
