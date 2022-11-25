@@ -7,6 +7,7 @@ const Cart = (props) => {
 
   const cartBody = cart && cart.map((cartItem, index)=>{
     const {id, name ,price, img, quantity }=cartItem
+    const formatePrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(quantity * Number(price))
     return (
       <tr>
       <th scope="row">1</th>
@@ -26,7 +27,7 @@ const Cart = (props) => {
           payload: id
         })}>+</button>
       </td>
-      <td>{quantity * Number(price)}</td>
+      <td>{formatePrice}</td>
       <td>
         <button className='btn btn-danger rounded-circle' onClick={()=>dispatch({
           type:'DELETE_CART_ITEM',

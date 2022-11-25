@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ProductDetail = () => {
+const ProductDetail = ({selectedProduct}) => {
   return (
     <div>
-      ProductDetail
+      <img src = {selectedProduct?.img}/>
     </div>
   )
 }

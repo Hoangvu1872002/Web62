@@ -56,10 +56,18 @@ const initialProduct = [
     useEffect(()=>{
       setProducts(initialProduct);
     },[])
+
+    const conViewProductDetail = (id) =>{
+      const selectedProduct = products.find((item)=> item.id === id)
+      setSelectedProduct(selectedProduct)
+    }
+
     return (
       <div className="Home">
-       <ProductList products={products} setCart ={setCart}/>
-       <ProductDetail/>
+       <ProductList 
+       conViewProductDetail={conViewProductDetail}
+       products={products} />
+       <ProductDetail selectedProduct={selectedProduct}/>
       </div>
     );
   }

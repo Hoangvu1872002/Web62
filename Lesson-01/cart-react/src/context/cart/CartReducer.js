@@ -7,8 +7,21 @@ const reducer =(state, action)=>{
     switch(type){
 
         case "ADD_TO_CART":
+
+
+        const searchItem = state.cart.findIndex(
+            (cartItem)=> cartItem.id === payload.id
+        )
+
+        if(searchItem){
             const newCartItem ={...payload, quantity : 1 }
-             newCart =[...state.cart, newCartItem];
+            newCart =[...state.cart, newCartItem];
+        }else{
+            newCart =[...state.cart];
+            newCart[searchItem].quantity+=1
+        }
+
+           
             return{
                 ...state,
                 cart:newCart

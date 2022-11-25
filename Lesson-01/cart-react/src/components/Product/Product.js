@@ -2,12 +2,12 @@ import React, { useContext, useState } from 'react'
 import CartContext from '../../context/cart/CartContext'
 import './Product.css'
 
-const Product = ({value, setCart}) => {
+const Product = ({conViewProductDetail, value}) => {
   const CartCtx = useContext(CartContext);
   const { dispatch } = CartCtx; 
+  const formatePrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value.price)
     
     const handleAddCart =(product) =>{
-console.log(product)
       const action = {
         type: "ADD_TO_CART",
         payload: product,
@@ -43,9 +43,9 @@ console.log(product)
   <img src={value.img}  className="card-img-top" alt="..." />
   <div className="card-body">
     <h5 className="card-title">{value.name}</h5>
-    <p className="card-price">Gia: {value.price}</p>
+    <p className="card-price">Gia: {formatePrice}</p>
     <div className='boxBtn d-flex ' style={{gap:"8px"}}>
-    <button type="button" className="btn btn-primary " onClick={()=>console.log('show', value)}>View</button>
+    <button type="button" className="btn btn-primary " onClick={()=>conViewProductDetail(value.id)}>View</button>
     <button type="button" className="btn btn-danger" onClick={()=>handleAddCart(value)}>Add to cart</button>
      </div>
   </div>

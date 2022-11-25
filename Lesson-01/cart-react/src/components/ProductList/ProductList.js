@@ -2,13 +2,16 @@ import React from 'react'
 import './ProductList.css'
 import Product from '../Product/Product'
 
-const ProductList = ({products, setCart}) => {
+const ProductList = ({ conViewProductDetail ,products}) => {
                                                
   return (
     <div className="box">
     <div className="boxItem">
      {products.map((item) =>(
-      <Product value={item} key={item.id} setCart={setCart}/>
+      <Product
+      conViewProductDetail={conViewProductDetail}
+      value={item}
+      key={item.id} />
      ))}
     </div>
     </div>
